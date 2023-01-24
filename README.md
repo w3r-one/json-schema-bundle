@@ -587,7 +587,7 @@ $builder
         "options": {
             "widget": "text",
             "layout": "default",
-            "for": "bar"
+            "foo": "bar"
         }
     },
 }
