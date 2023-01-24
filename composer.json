@@ -1,5 +1,5 @@
 {
-    "name": "w3r-one/json-schema",
+    "name": "w3r-one/json-schema-bundle",
     "description": "serialize Symfony Forms into JSON schema",
     "type": "symfony-bundle",
     "keywords": ["json schema", "Symfony", "form"],
