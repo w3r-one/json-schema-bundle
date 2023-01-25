@@ -84,8 +84,7 @@ class FormController extends AbstractController
 			"items": {
 				"type": "string",
 				"enum": ["customer", "manufacturer", "subcontractor", "installer", "supplier", "rival", "administrator"]
-			},
-			"minItems": 1,
+			}
 			"uniqueItems": true
 		},
 		"address": {
