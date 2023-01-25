@@ -23,7 +23,6 @@ class AbstractChoiceTransformer extends AbstractTransformer
         $schema['options']['choice'] = [
             'expanded' => $form->getConfig()->getOption('expanded', false),
             'multiple' => $form->getConfig()->getOption('multiple', false),
-            'filterable' => $form->getConfig()->getOption('w3r_one_json_schema')['filterable'] ?? true,
         ];
         if (!empty($placeholder = $form->getConfig()->getOption('placeholder'))) {
             $schema['options']['choice']['placeholder'] = $placeholder;
