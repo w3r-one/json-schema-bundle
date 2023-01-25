@@ -47,7 +47,7 @@ class ObjectTransformer extends AbstractTransformer
                 'required' => [],
                 'options' => [
                     'widget' => !empty($widget) ? $widget : 'object',
-                    'layout' => $this->resolver->getDefaultLayout(),
+                    'layout' => $form->getConfig()->getOption('w3r_one_json_schema')['layout'] ?? $this->resolver->getDefaultLayout(),
                     'form' => [
                         'method' => $form->getConfig()->getOption('method', Request::METHOD_POST),
                         'action' => $action,
