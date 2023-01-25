@@ -661,7 +661,7 @@ You can also implement directly the interface, but you've to manage everything b
 
 You're using [VichUploaderBundle](https://github.com/dustin10/VichUploaderBundle) and you want to serialize specific options of this bundle.
 
-Just extend the [AbstractObjectTransformer](src/Transformer/AbstractObjectTransformer.php), call the parent function, embed your json props and voila!
+Just extend the [ObjectTransformer](src/Transformer/ObjectTransformer.php), call the parent function, embed your json props and voila!
 
 ```php
 <?php
@@ -669,10 +669,10 @@ Just extend the [AbstractObjectTransformer](src/Transformer/AbstractObjectTransf
 namespace App\JsonSchema;
 
 use Symfony\Component\Form\FormInterface;
-use W3rOne\JsonSchemaBundle\Transformer\AbstractObjectTransformer;
+use W3rOne\JsonSchemaBundle\Transformer\ObjectTransformer;
 use W3rOne\JsonSchemaBundle\Utils;
 
-class VichFileTypeTransformer extends AbstractObjectTransformer
+class VichFileTypeTransformer extends ObjectTransformer
 {
     public function transform(FormInterface $form): array
     {
@@ -694,16 +694,16 @@ class VichFileTypeTransformer extends AbstractObjectTransformer
 
 You want to add a `PositionType` as an `integer`.
 
-Here we just extend the correct base `AbstractIntegerTransformer`.
+Here we just extend the correct base `IntegerTransformer`.
 
 ```php
 <?php
 
 namespace App\JsonSchema;
 
-use W3rOne\JsonSchemaBundle\Transformer\AbstractIntegerTransformer;
+use W3rOne\JsonSchemaBundle\Transformer\IntegerTransformer;
 
-class PositionTypeTransformer extends AbstractIntegerTransformer
+class PositionTypeTransformer extends IntegerTransformer
 {
 }
 ```
