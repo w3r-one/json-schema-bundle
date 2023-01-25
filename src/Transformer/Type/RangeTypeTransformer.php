@@ -11,8 +11,8 @@
 
 namespace W3rOne\JsonSchemaBundle\Transformer\Type;
 
-use W3rOne\JsonSchemaBundle\Transformer\AbstractNumberTransformer;
+use W3rOne\JsonSchemaBundle\Transformer\NumberTransformer;
 
-class RangeTypeTransformer extends AbstractNumberTransformer
+class RangeTypeTransformer extends NumberTransformer
 {
 }

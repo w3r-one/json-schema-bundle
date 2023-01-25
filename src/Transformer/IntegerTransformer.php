@@ -13,7 +13,7 @@ namespace W3rOne\JsonSchemaBundle\Transformer;
 
 use Symfony\Component\Form\FormInterface;
 
-class AbstractIntegerTransformer extends AbstractTransformer
+class IntegerTransformer extends AbstractTransformer
 {
     public function transform(FormInterface $form): array
     {

@@ -11,8 +11,8 @@
 
 namespace W3rOne\JsonSchemaBundle\Transformer\Type;
 
-use W3rOne\JsonSchemaBundle\Transformer\AbstractDateTimeTransformer;
+use W3rOne\JsonSchemaBundle\Transformer\DateTimeTransformer;
 
-class DateTypeTransformer extends AbstractDateTimeTransformer
+class DateTypeTransformer extends DateTimeTransformer
 {
 }

@@ -11,8 +11,8 @@
 
 namespace W3rOne\JsonSchemaBundle\Transformer\Type;
 
-use W3rOne\JsonSchemaBundle\Transformer\AbstractStringTransformer;
+use W3rOne\JsonSchemaBundle\Transformer\StringTransformer;
 
-class EmailTypeTransformer extends AbstractStringTransformer
+class EmailTypeTransformer extends StringTransformer
 {
 }

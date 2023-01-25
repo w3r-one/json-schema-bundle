@@ -12,10 +12,10 @@
 namespace W3rOne\JsonSchemaBundle\Transformer\Type;
 
 use W3rOne\JsonSchemaBundle\Exception\TransformerException;
-use W3rOne\JsonSchemaBundle\Transformer\AbstractArrayTransformer;
+use W3rOne\JsonSchemaBundle\Transformer\ArrayTransformer;
 use Symfony\Component\Form\FormInterface;
 
-class CollectionTypeTransformer extends AbstractArrayTransformer
+class CollectionTypeTransformer extends ArrayTransformer
 {
     public function transform(FormInterface $form): array
     {

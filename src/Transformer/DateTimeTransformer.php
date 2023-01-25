@@ -13,12 +13,12 @@ namespace W3rOne\JsonSchemaBundle\Transformer;
 
 use Symfony\Component\Form\FormInterface;
 
-class AbstractDateTimeTransformer extends AbstractObjectTransformer
+class DateTimeTransformer extends ObjectTransformer
 {
     public function transform(FormInterface $form): array
     {
         if ('single_text' === ($widget = $form->getConfig()->getOption('widget', 'choice'))) {
-            $schema = (new AbstractStringTransformer($this->requestStack, $this->csrfTokenManager, $this->translator, $this->resolver))->transform($form);
+            $schema = (new StringTransformer($this->requestStack, $this->csrfTokenManager, $this->translator, $this->resolver))->transform($form);
         }
         else {
             $schema = parent::transform($form);

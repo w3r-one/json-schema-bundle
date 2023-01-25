@@ -13,7 +13,7 @@ namespace W3rOne\JsonSchemaBundle;
 
 use W3rOne\JsonSchemaBundle\Exception\TransformerException;
 use W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer;
-use W3rOne\JsonSchemaBundle\Transformer\AbstractObjectTransformer;
+use W3rOne\JsonSchemaBundle\Transformer\ObjectTransformer;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
@@ -54,7 +54,7 @@ class Resolver
             }
         }
         if (true === $form->getConfig()->getOption('compound', false)) {
-            return new AbstractObjectTransformer($this->requestStack, $this->csrfTokenManager, $this->translator, $this);
+            return new ObjectTransformer($this->requestStack, $this->csrfTokenManager, $this->translator, $this);
         }
 
         throw new TransformerException(sprintf('Unable to find a transformer for type `%s`.', $fqnFormType));

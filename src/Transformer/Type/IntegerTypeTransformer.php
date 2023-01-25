@@ -11,10 +11,10 @@
 
 namespace W3rOne\JsonSchemaBundle\Transformer\Type;
 
-use W3rOne\JsonSchemaBundle\Transformer\AbstractIntegerTransformer;
+use W3rOne\JsonSchemaBundle\Transformer\IntegerTransformer;
 use Symfony\Component\Form\FormInterface;
 
-class IntegerTypeTransformer extends AbstractIntegerTransformer
+class IntegerTypeTransformer extends IntegerTransformer
 {
     public function transform(FormInterface $form): array
     {

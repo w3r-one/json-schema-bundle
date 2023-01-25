@@ -11,11 +11,11 @@
 
 namespace W3rOne\JsonSchemaBundle\Transformer\Type;
 
-use W3rOne\JsonSchemaBundle\Transformer\AbstractObjectTransformer;
+use W3rOne\JsonSchemaBundle\Transformer\ObjectTransformer;
 use Symfony\Component\Form\FormInterface;
 use W3rOne\JsonSchemaBundle\Utils;
 
-class AutocompleteTypeTransformer extends AbstractObjectTransformer
+class AutocompleteTypeTransformer extends ObjectTransformer
 {
     public function transform(FormInterface $form): array
     {

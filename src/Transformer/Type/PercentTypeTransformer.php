@@ -11,10 +11,10 @@
 
 namespace W3rOne\JsonSchemaBundle\Transformer\Type;
 
-use W3rOne\JsonSchemaBundle\Transformer\AbstractStringTransformer;
+use W3rOne\JsonSchemaBundle\Transformer\StringTransformer;
 use Symfony\Component\Form\FormInterface;
 
-class PercentTypeTransformer extends AbstractStringTransformer
+class PercentTypeTransformer extends StringTransformer
 {
     public function transform(FormInterface $form): array
     {

@@ -15,7 +15,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use W3rOne\JsonSchemaBundle\Utils;
 
-class AbstractObjectTransformer extends AbstractTransformer
+class ObjectTransformer extends AbstractTransformer
 {
     public function transform(FormInterface $form): array
     {

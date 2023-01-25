@@ -11,8 +11,8 @@
 
 namespace W3rOne\JsonSchemaBundle\Transformer\Type;
 
-use W3rOne\JsonSchemaBundle\Transformer\AbstractObjectTransformer;
+use W3rOne\JsonSchemaBundle\Transformer\ObjectTransformer;
 
-class RepeatedTypeTransformer extends AbstractObjectTransformer
+class RepeatedTypeTransformer extends ObjectTransformer
 {
 }

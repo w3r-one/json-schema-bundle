@@ -11,8 +11,8 @@
 
 namespace W3rOne\JsonSchemaBundle\Transformer\Type;
 
-use W3rOne\JsonSchemaBundle\Transformer\AbstractBooleanTransformer;
+use W3rOne\JsonSchemaBundle\Transformer\BooleanTransformer;
 
-class SubmitTypeTransformer extends AbstractBooleanTransformer
+class SubmitTypeTransformer extends BooleanTransformer
 {
 }

@@ -15,7 +15,7 @@ use W3rOne\JsonSchemaBundle\Utils;
 use Symfony\Component\Form\ChoiceList\View\ChoiceGroupView;
 use Symfony\Component\Form\FormInterface;
 
-class AbstractChoiceTransformer extends AbstractTransformer
+class ChoiceTransformer extends AbstractTransformer
 {
     public function transform(FormInterface $form): array
     {

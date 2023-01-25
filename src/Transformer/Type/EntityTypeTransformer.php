@@ -11,10 +11,10 @@
 
 namespace W3rOne\JsonSchemaBundle\Transformer\Type;
 
-use W3rOne\JsonSchemaBundle\Transformer\AbstractChoiceTransformer;
+use W3rOne\JsonSchemaBundle\Transformer\ChoiceTransformer;
 use Symfony\Component\Form\FormInterface;
 
-class EntityTypeTransformer extends AbstractChoiceTransformer
+class EntityTypeTransformer extends ChoiceTransformer
 {
     public function transform(FormInterface $form): array
     {
