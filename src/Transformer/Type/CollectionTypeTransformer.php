@@ -27,7 +27,6 @@ class CollectionTypeTransformer extends ArrayTransformer
 
         foreach($form->all() as $formItem) {
             $schema['items'] = $this->resolver->resolve($formItem)->transform($formItem);
-            $schema['items']['title'] = '';
             foreach($formItem->all() as $formProperty) {
                 $schema['items']['properties'][$formProperty->getName()] = $this->resolver->resolve($formProperty)->transform($formProperty);
             }
@@ -43,7 +42,6 @@ class CollectionTypeTransformer extends ArrayTransformer
             }
 
             $schema['items'] = $this->resolver->resolve($entryType)->transform($entryType);
-            $schema['items']['title'] = '';
             foreach($entryType->all() as $formProperty) {
                 $schema['items']['properties'][$formProperty->getName()] = $this->resolver->resolve($formProperty)->transform($formProperty);
             }
