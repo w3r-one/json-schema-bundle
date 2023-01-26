@@ -49,7 +49,7 @@ class Resolver
         foreach($this->transformerNamespaces as $namespace) {
             if (class_exists($formTypeTransformer = $namespace . Utils::substrAfterLastDelimiter($fqnFormType, '\\') . 'Transformer')) {
                 return new $formTypeTransformer($this->requestStack, $this->csrfTokenManager, $this->translator, $this);
-            } elseif (class_exists($formTypeTransformer = $namespace . Utils::substrAfterLastDelimiter($fqnParentFormType, '\\') . 'Transformer')) {
+            } elseif (null !== $fqnParentFormType && class_exists($formTypeTransformer = $namespace . Utils::substrAfterLastDelimiter($fqnParentFormType, '\\') . 'Transformer')) {
                 return new $formTypeTransformer($this->requestStack, $this->csrfTokenManager, $this->translator, $this);
             }
         }
