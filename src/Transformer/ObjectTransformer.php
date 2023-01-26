@@ -27,19 +27,24 @@ class ObjectTransformer extends AbstractTransformer
         }
         // base json schema
         else {
-            $request = $this->requestStack->getCurrentRequest();
-            if (empty($action = $form->getConfig()->getOption('action'))) {
-                $action = $request->getUri();
+            if (null !== ($request = $this->requestStack->getCurrentRequest())) {
+                $hostName = $request->getSchemeAndHttpHost();
+                if (empty($action = $form->getConfig()->getOption('action'))) {
+                    $action = $request->getUri();
+                }
+                elseif (0 === strpos(strtolower(trim($action)), 'http')) {
+                    $action = $request->getUriForPath($action);
+                }
             }
-            elseif (0 === strpos(strtolower(trim($action)), 'http')) {
-                $action = $request->getUriForPath($action);
+            else {
+                $hostName = $action = 'http://localhost';
             }
             $widget = Utils::getWidget($form);
 
             $schema = [
                 '$schema' => 'https://json-schema.org/draft/2020-12/schema',
                 # TODO: perhaps find a way to use more specific $id for caching purpose
-                '$id' => $request->getSchemeAndHttpHost() . '/schemas/' . $form->getName() . '.json',
+                '$id' => $hostName . '/schemas/' . $form->getName() . '.json',
                 'type' => 'object',
                 'title' => $form->getName(),
                 'properties' => [],
