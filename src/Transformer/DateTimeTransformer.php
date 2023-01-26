@@ -38,7 +38,9 @@ class DateTimeTransformer extends ObjectTransformer
                 $schema['options']['date_time']['placeholder'] = $form->getConfig()->getOption('placeholder');
             }
         }
-        $schema['options']['widget'] = $schema['options']['widget'] . '_' . $widget;
+        if (null === ($form->getConfig()->getOption('w3r_one_json_schema')['widget'] ?? null)) {
+            $schema['options']['widget'] = $schema['options']['widget'] . '_' . $widget;
+        }
 
         return $schema;
     }
