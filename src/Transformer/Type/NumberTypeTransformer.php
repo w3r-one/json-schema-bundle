@@ -23,8 +23,9 @@ class NumberTypeTransformer extends StringTransformer
             $schema['type'] = 'number';
         }
         $schema['options']['number'] = [
-            'scale' => $form->getConfig()->getOption('scale', 3),
+            'scale' => $form->getConfig()->getOption('scale'),
             'roundingMode' => $form->getConfig()->getOption('rounding_mode', \NumberFormatter::ROUND_HALFUP),
+            'input' => $form->getConfig()->getOption('input', 'number'),
         ];
 
         return $schema;

@@ -19,7 +19,10 @@ class CheckboxTypeTransformer extends BooleanTransformer
     public function transform(FormInterface $form): array
     {
         $schema = parent::transform($form);
-        $schema['options']['checkbox']['value'] = $form->getConfig()->getOption('value', 1);
+        $schema['options']['checkbox'] = [
+            'value' => $form->getConfig()->getOption('value', 1),
+            'falseValues' => $form->getConfig()->getOption('false_values', [null]),
+        ];
 
         return $schema;
     }

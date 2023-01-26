@@ -12,18 +12,7 @@
 namespace W3rOne\JsonSchemaBundle\Transformer\Type;
 
 use W3rOne\JsonSchemaBundle\Transformer\StringTransformer;
-use Symfony\Component\Form\FormInterface;
 
 class RadioTypeTransformer extends StringTransformer
 {
-    public function transform(FormInterface $form): array
-    {
-        $schema = parent::transform($form);
-        $schema['options']['radio'] = [
-            'value' => $form->getConfig()->getOption('value', 1),
-            'falseValues' => $form->getConfig()->getOption('false_values', [null]),
-        ];
-
-        return $schema;
-    }
 }
