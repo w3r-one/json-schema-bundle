@@ -53,4 +53,12 @@ class MoneyTypeTransformerTest extends BaseTransformerTest
         $this->assertEquals($defaultRoundingMode, $this->schema['properties'][self::$property]['options'][self::$widget]['roundingMode']);
         $this->assertEquals($defaultScale, $this->schema['properties'][self::$property]['options'][self::$widget]['scale']);
     }
+
+    public function testData()
+    {
+        $this->common(self::$formType, self::$property, self::$type, self::$widget, null, [
+            'data' => $data = '100',
+        ]);
+        $this->assertEquals($data, $this->schema['properties'][self::$property]['default']);
+    }
 }

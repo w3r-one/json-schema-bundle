@@ -79,7 +79,19 @@ class BaseTransformerTest extends JsonSchemaTestCase
             ])), $property, $type, $widget, $layout);
             $this->assertArrayHasKey($optionKey, $this->schema['properties'][$property]['options']);
             $this->assertEquals($optionValue, $this->schema['properties'][$property]['options'][$optionKey]);
+
+            // write-only
+            $this->process($this->factory->create()->add($property, $formType, array_merge($options, [
+                'mapped' => false,
+            ])), $property, $type, $widget, $layout);
+            $this->assertEquals(true, $this->schema['properties'][$property]['writeOnly']);
         }
+
+        // read-only
+        $this->process($this->factory->create()->add($property, $formType, array_merge($options, [
+            'disabled' => true,
+        ])), $property, $type, $widget, $layout);
+        $this->assertEquals(true, $this->schema['properties'][$property]['readOnly']);
 
         // extending HTML attr
         $this->process($this->factory->create()->add($property, $formType, array_merge($options, [

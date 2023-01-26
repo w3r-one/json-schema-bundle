@@ -26,4 +26,12 @@ class ColorTypeTransformerTest extends BaseTransformerTest
     {
         $this->common(self::$formType, self::$property, self::$type, self::$widget);
     }
+
+    public function testData()
+    {
+        $this->common(self::$formType, self::$property, self::$type, self::$widget, null, [
+            'data' => $data = '#000',
+        ]);
+        $this->assertEquals($data, $this->schema['properties'][self::$property]['default']);
+    }
 }

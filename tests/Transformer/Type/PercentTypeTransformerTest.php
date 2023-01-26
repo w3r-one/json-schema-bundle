@@ -56,4 +56,12 @@ class PercentTypeTransformerTest extends BaseTransformerTest
         $this->assertEquals($defaultScale, $this->schema['properties'][self::$property]['options'][self::$widget]['scale']);
         $this->assertEquals($defaultSymbol, $this->schema['properties'][self::$property]['options'][self::$widget]['symbol']);
     }
+
+    public function testData()
+    {
+        $this->common(self::$formType, self::$property, self::$type, self::$widget, null, [
+            'data' => $data = '55',
+        ]);
+        $this->assertEquals($data, $this->schema['properties'][self::$property]['default']);
+    }
 }

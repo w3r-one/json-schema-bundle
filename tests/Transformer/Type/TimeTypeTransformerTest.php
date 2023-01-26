@@ -80,4 +80,13 @@ class TimeTypeTransformerTest extends BaseTransformerTest
             'widget' => 'single_text',
         ]);
     }
+
+    public function testData()
+    {
+        $this->common(self::$formType, self::$property, self::$type, 'time_choice', null, [
+            'widget' => 'choice',
+            'data' => $data = new \DateTime('1986-04-30 18:14:00'),
+        ]);
+        $this->assertEquals($data, $this->schema['properties'][self::$property]['default']);
+    }
 }

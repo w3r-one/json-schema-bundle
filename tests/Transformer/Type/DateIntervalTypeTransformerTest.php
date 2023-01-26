@@ -55,6 +55,8 @@ class DateIntervalTypeTransformerTest extends BaseTransformerTest
             }
         }
         $possibleCombinations = array_filter($possibleCombinations);
+
+        // overkill: comment for performance improvement
         foreach ($possibleCombinations as $possibleCombination) {
             $this->testWidgetChoice($possibleCombination);
         }
@@ -98,6 +100,8 @@ class DateIntervalTypeTransformerTest extends BaseTransformerTest
             }
         }
         $possibleCombinations = array_filter($possibleCombinations);
+
+        // overkill: comment for performance improvement
         foreach ($possibleCombinations as $possibleCombination) {
             $this->testWidgetText($possibleCombination);
         }

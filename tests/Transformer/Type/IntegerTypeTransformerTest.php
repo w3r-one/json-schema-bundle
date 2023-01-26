@@ -41,4 +41,12 @@ class IntegerTypeTransformerTest extends BaseTransformerTest
         ]);
         $this->assertEquals($defaultRoundingMode, $this->schema['properties'][self::$property]['options'][self::$widget]['roundingMode']);
     }
+
+    public function testData()
+    {
+        $this->common(self::$formType, self::$property, self::$type, self::$widget, null, [
+            'data' => $data = 2,
+        ]);
+        $this->assertEquals($data, $this->schema['properties'][self::$property]['default']);
+    }
 }

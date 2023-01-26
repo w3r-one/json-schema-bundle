@@ -22,7 +22,9 @@ class DateTypeTransformerTest extends BaseTransformerTest
 
     public function testWidgetChoice()
     {
-        $this->common(self::$formType, self::$property, self::$type, 'date_choice');
+        $this->common(self::$formType, self::$property, self::$type, 'date_choice', null, [
+            'widget' => 'choice',
+        ]);
         $this->assertArrayHasKey('properties', $this->schema['properties'][self::$property]);
         $this->assertCount(3, $this->schema['properties'][self::$property]['properties']);
         foreach (['year', 'month', 'day'] as $property) {
@@ -53,5 +55,14 @@ class DateTypeTransformerTest extends BaseTransformerTest
         $this->common(self::$formType, self::$property, 'string', 'date_single_text', null, [
             'widget' => 'single_text',
         ]);
+    }
+
+    public function testData()
+    {
+        $this->common(self::$formType, self::$property, self::$type, 'date_choice', null, [
+            'widget' => 'choice',
+            'data' => $data = new \DateTime('1986-04-30'),
+        ]);
+        $this->assertEquals($data, $this->schema['properties'][self::$property]['default']);
     }
 }
