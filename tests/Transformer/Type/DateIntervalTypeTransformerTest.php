@@ -46,17 +46,8 @@ class DateIntervalTypeTransformerTest extends BaseTransformerTest
 
     public function testWidgetChoiceVariations()
     {
-        $possibleParts = ['years', 'months', 'days', 'hours', 'minutes', 'seconds'];
-        $possibleCombinations = [[]];
-
-        foreach ($possibleParts as $part) {
-            foreach ($possibleCombinations as $combination) {
-                array_push($possibleCombinations, array_merge(array($part), $combination));
-            }
-        }
-        $possibleCombinations = array_filter($possibleCombinations);
-
         // overkill: comment for performance improvement
+        $possibleCombinations = $this->getCombinations(['years', 'months', 'days', 'hours', 'minutes', 'seconds']);
         foreach ($possibleCombinations as $possibleCombination) {
             $this->testWidgetChoice($possibleCombination);
         }
@@ -91,17 +82,8 @@ class DateIntervalTypeTransformerTest extends BaseTransformerTest
 
     public function testWidgetTextVariations()
     {
-        $possibleParts = ['years', 'months', 'days', 'hours', 'minutes', 'seconds'];
-        $possibleCombinations = [[]];
-
-        foreach ($possibleParts as $part) {
-            foreach ($possibleCombinations as $combination) {
-                array_push($possibleCombinations, array_merge(array($part), $combination));
-            }
-        }
-        $possibleCombinations = array_filter($possibleCombinations);
-
         // overkill: comment for performance improvement
+        $possibleCombinations = $this->getCombinations(['years', 'months', 'days', 'hours', 'minutes', 'seconds']);
         foreach ($possibleCombinations as $possibleCombination) {
             $this->testWidgetText($possibleCombination);
         }

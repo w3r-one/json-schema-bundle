@@ -50,4 +50,17 @@ class JsonSchemaTestCase extends TestCase
             ->addTypeExtensions([new JsonSchemaExtension()])
             ->getFormFactory();
     }
+
+    protected function getCombinations(array $possibleParts): array
+    {
+        $possibleCombinations = [[]];
+
+        foreach ($possibleParts as $part) {
+            foreach ($possibleCombinations as $combination) {
+                array_push($possibleCombinations, array_merge(array($part), $combination));
+            }
+        }
+
+        return array_filter($possibleCombinations);
+    }
 }
