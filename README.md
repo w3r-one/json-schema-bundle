@@ -228,7 +228,7 @@ class FormController extends AbstractController
 
 The goal behind this bundle is based on the fact that it is complicated for a modern front-end application to maintain a form component that is not mapped directly on a Symfony FormType.
 
-Most of the time, the front-end component is defining form's props in a static way and if the back-end wants to update the form, we need to work twice, it's error prone and it's not extensive at all.
+Most of the time, the front-end component is defining form's props in a static way and if the back-end wants to update the form, we need to work twice, it's error prone and it's not extensible at all.
 
 The main idea is to give the lead to the back-end, provide a JSON schema dynamically that will detail the full component and its related documentation ; the front-end "just" have to display and handle the form on his side.
 
@@ -416,44 +416,44 @@ All Symfony [FormTypes](https://symfony.com/doc/current/reference/forms/types.ht
 
 <details><summary>View the complete list</summary>
 
-* TextType
-* TextareaType
-* EmailType
-* PasswordType
-* SearchType
-* UrlType
-* TelType
-* ColorType
-* FileType
-* RadioType
-* UuidType
-* UlidType
-* HiddenType
-* IntegerType
-* MoneyType
-* NumberType
-* PercentType
-* RangeType
-* ChoiceType
-* EnumType
-* EntityType
-* CountryType
-* LanguageType
-* LocaleType
-* TimezoneType
-* CurrencyType
-* DateType
-* DateTimeType
-* TimeType
-* WeekType
-* BirthdayType
-* DateIntervalType
-* CollectionType
-* CheckboxType
-* ButtonType
-* ResetType
-* SubmitType
-* RepeatedType
+* [TextType](https://symfony.com/doc/current/reference/forms/types/text.html)
+* [TextareaType](https://symfony.com/doc/current/reference/forms/types/textarea.html)
+* [EmailType](https://symfony.com/doc/current/reference/forms/types/eamil.html)
+* [PasswordType](https://symfony.com/doc/current/reference/forms/types/password.html)
+* [SearchType](https://symfony.com/doc/current/reference/forms/types/search.html)
+* [UrlType](https://symfony.com/doc/current/reference/forms/types/url.html)
+* [TelType](https://symfony.com/doc/current/reference/forms/types/tel.html)
+* [ColorType](https://symfony.com/doc/current/reference/forms/types/color.html)
+* [FileType](https://symfony.com/doc/current/reference/forms/types/file.html)
+* [RadioType](https://symfony.com/doc/current/reference/forms/types/radio.html)
+* [UuidType](https://symfony.com/doc/current/reference/forms/types/uuid.html)
+* [UlidType](https://symfony.com/doc/current/reference/forms/types/ulid.html)
+* [HiddenType](https://symfony.com/doc/current/reference/forms/types/hidden.html)
+* [IntegerType](https://symfony.com/doc/current/reference/forms/types/integer.html)
+* [MoneyType](https://symfony.com/doc/current/reference/forms/types/money.html)
+* [NumberType](https://symfony.com/doc/current/reference/forms/types/number.html)
+* [PercentType](https://symfony.com/doc/current/reference/forms/types/percent.html)
+* [RangeType](https://symfony.com/doc/current/reference/forms/types/range.html)
+* [ChoiceType](https://symfony.com/doc/current/reference/forms/types/choice.html)
+* [EnumType](https://symfony.com/doc/current/reference/forms/types/enum.html)
+* [EntityType](https://symfony.com/doc/current/reference/forms/types/entity.html)
+* [CountryType](https://symfony.com/doc/current/reference/forms/types/country.html)
+* [LanguageType](https://symfony.com/doc/current/reference/forms/types/language.html)
+* [LocaleType](https://symfony.com/doc/current/reference/forms/types/locale.html)
+* [TimezoneType](https://symfony.com/doc/current/reference/forms/types/timezone.html)
+* [CurrencyType](https://symfony.com/doc/current/reference/forms/types/currency.html)
+* [DateType](https://symfony.com/doc/current/reference/forms/types/date.html)
+* [DateTimeType](https://symfony.com/doc/current/reference/forms/types/datetime.html)
+* [TimeType](https://symfony.com/doc/current/reference/forms/types/time.html)
+* [WeekType](https://symfony.com/doc/current/reference/forms/types/week.html)
+* [BirthdayType](https://symfony.com/doc/current/reference/forms/types/birthday.html)
+* [DateIntervalType](https://symfony.com/doc/current/reference/forms/types/dateinterval.html)
+* [CollectionType](https://symfony.com/doc/current/reference/forms/types/collection.html)
+* [CheckboxType](https://symfony.com/doc/current/reference/forms/types/checkbox.html)
+* [ButtonType](https://symfony.com/doc/current/reference/forms/types/button.html)
+* [ResetType](https://symfony.com/doc/current/reference/forms/types/reset.html)
+* [SubmitType](https://symfony.com/doc/current/reference/forms/types/submit.html)
+* [RepeatedType](https://symfony.com/doc/current/reference/forms/types/repeated.html)
 
 </details>
 
@@ -534,7 +534,7 @@ It includes:
         * `options.collection.allowAdd`
         * `options.collection.allowDelete`
     * `CountryType`
-        * `options.country.alpha3`
+        * `options.choice.alpha3`
     * `DateType/DateTimeType/TimeType/WeekType/BirthdayType/DateIntervalType`
         * `options.date_time.format`
         * `options.date_time.input`
@@ -544,7 +544,7 @@ It includes:
     * `IntegerType`
         * `options.integer.roundingMode`
     * `LanguageType`
-        * `options.langugage.alpha3`
+        * `options.choice.alpha3`
     * `MoneyType`
         * `options.money.currency`
         * `options.money.divisor`
@@ -652,7 +652,7 @@ Transformers **must** implement the [TransformerInterface](src/Transformer/Trans
 
 For example if you want to override the Symfony `DateIntervalType`, your transformer must be named `DateIntervalTypeTransformer`.
 
-The proper approach is to extend one of ours abstract or specific transformers, redefine method `transform`, call the parent function and extending the json schema before returning it.
+The proper approach is to extend one of ours abstract or specific transformers, redefine method `transform`, call the parent function and extending/overwriting the json schema before returning it.
 
 You can also implement directly the interface, but you've to manage everything by yourself in this case.
 
