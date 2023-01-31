@@ -11,15 +11,15 @@
 
 namespace W3rOne\JsonSchemaBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class W3rOneJsonSchemaExtension extends Extension
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -29,7 +29,7 @@ class W3rOneJsonSchemaExtension extends Extension
         $container->setParameter('w3r_one_json_schema.default_layout', $config['default_layout']);
         $container->setParameter('w3r_one_json_schema.transformer_namespaces', $config['transformer_namespaces']);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
     }
 }
