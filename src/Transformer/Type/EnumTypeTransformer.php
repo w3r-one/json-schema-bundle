@@ -19,7 +19,9 @@ class EnumTypeTransformer extends ChoiceTransformer
     public function transform(FormInterface $form): array
     {
         $schema = parent::transform($form);
-        $schema['options']['widget'] = 'choice';
+        if (null === ($form->getConfig()->getOption('w3r_one_json_schema')['widget'] ?? null)) {
+            $schema['options']['widget'] = 'choice';
+        }
 
         return $schema;
     }

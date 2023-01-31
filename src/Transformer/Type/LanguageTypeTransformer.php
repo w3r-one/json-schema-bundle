@@ -19,7 +19,9 @@ class LanguageTypeTransformer extends ChoiceTransformer
     public function transform(FormInterface $form): array
     {
         $schema = parent::transform($form);
-        $schema['options']['widget'] = 'language';
+        if (null === ($form->getConfig()->getOption('w3r_one_json_schema')['widget'] ?? null)) {
+            $schema['options']['widget'] = 'language';
+        }
         $schema['options']['language']['alpha3'] = $form->getConfig()->getOption('alpha3', false);
 
         return $schema;

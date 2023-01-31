@@ -19,7 +19,9 @@ class CurrencyTypeTransformer extends ChoiceTransformer
     public function transform(FormInterface $form): array
     {
         $schema = parent::transform($form);
-        $schema['options']['widget'] = 'currency';
+        if (null === ($form->getConfig()->getOption('w3r_one_json_schema')['widget'] ?? null)) {
+            $schema['options']['widget'] = 'currency';
+        }
 
         return $schema;
     }
