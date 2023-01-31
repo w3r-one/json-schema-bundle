@@ -4,7 +4,7 @@ A bundle to serialize a [Symfony Form](https://github.com/symfony/form) into a [
 
 ## Installation
 
-`$ composer require w3r-one/json-schema`
+`$ composer require w3r-one/json-schema-bundle`
 
 If you're not using [Symfony Flex](https://github.com/symfony/flex), you've to register the bundle manually:
 
