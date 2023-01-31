@@ -22,7 +22,7 @@ class CountryTypeTransformer extends ChoiceTransformer
         if (null === ($form->getConfig()->getOption('w3r_one_json_schema')['widget'] ?? null)) {
             $schema['options']['widget'] = 'country';
         }
-        $schema['options']['country']['alpha3'] = $form->getConfig()->getOption('alpha3', false);
+        $schema['options']['choice']['alpha3'] = $form->getConfig()->getOption('alpha3', false);
 
         return $schema;
     }
