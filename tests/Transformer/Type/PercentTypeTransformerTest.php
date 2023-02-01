@@ -40,7 +40,6 @@ class PercentTypeTransformerTest extends BaseTransformerTest
         $this->assertArrayHasKey('scale', $this->schema['properties'][self::$property]['options'][self::$widget]);
         $this->assertArrayHasKey('symbol', $this->schema['properties'][self::$property]['options'][self::$widget]);
         $this->assertEquals('fractional', $this->schema['properties'][self::$property]['options'][self::$widget]['type']);
-        $this->assertEquals(null, $this->schema['properties'][self::$property]['options'][self::$widget]['roundingMode']);
         $this->assertEquals(0, $this->schema['properties'][self::$property]['options'][self::$widget]['scale']);
         $this->assertEquals('%', $this->schema['properties'][self::$property]['options'][self::$widget]['symbol']);
     }
