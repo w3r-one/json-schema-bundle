@@ -1,0 +1,39 @@
+name: Build
+
+on: [push, pull_request]
+
+env:
+    fail-fast: true
+
+permissions:
+    contents: read
+
+jobs:
+    build:
+        name: PHP ${{ matrix.php }} with Symfony ${{ matrix.symfony }} tests
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                php: ['7.4', '8.0', '8.1', '8.2']
+                symfony: ['5.4', '6.0', '6.1', '6.2']
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Install PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  coverage: none
+                  php-version: ${{ matrix.php }}
+                  tools: composer:v2
+                  extensions: mbstring, intl
+
+            - name: Install dependencies
+              run: |
+                  composer require --no-progress --no-scripts --no-plugins symfony/flex
+                  composer config extra.symfony.require "${{ matrix.symfony }}"
+                  composer update --no-interaction --prefer-dist --optimize-autoloader --prefer-stable
+
+            - name: Run test suite
+              run: vendor/bin/phpunit -v
