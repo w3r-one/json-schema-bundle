@@ -29,6 +29,10 @@ class CollectionTypeTransformer extends ArrayTransformer
             $schema['items'] = $this->resolver->resolve($formItem)->transform($formItem);
             foreach($formItem->all() as $formProperty) {
                 $schema['items']['properties'][$formProperty->getName()] = $this->resolver->resolve($formProperty)->transform($formProperty);
+
+                if (!empty($formProperty->all())) {
+                    $this->recursiveTransform($formProperty, $schema['items']['properties'][$formProperty->getName()]);
+                }
             }
 
             break;
@@ -44,6 +48,23 @@ class CollectionTypeTransformer extends ArrayTransformer
             $schema['items'] = $this->resolver->resolve($entryType)->transform($entryType);
             foreach($entryType->all() as $formProperty) {
                 $schema['items']['properties'][$formProperty->getName()] = $this->resolver->resolve($formProperty)->transform($formProperty);
+
+                if (!empty($formProperty->all())) {
+                    $this->recursiveTransform($formProperty, $schema['items']['properties'][$formProperty->getName()]);
+                }
+            }
+        }
+
+        return $schema;
+    }
+
+    public function recursiveTransform(FormInterface $form, array &$schema): array
+    {
+        foreach($form->all() as $child) {
+            $schema['properties'][$child->getName()] = $this->resolver->resolve($child)->transform($child);
+
+            if (!empty($child->all())) {
+                $this->recursiveTransform($child, $schema['properties'][$child->getName()]);
             }
         }
 
