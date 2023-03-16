@@ -29,6 +29,7 @@ class CollectionTypeTransformer extends ArrayTransformer
             $schema['items'] = $this->resolver->resolve($formItem)->transform($formItem);
             foreach($formItem->all() as $formProperty) {
                 $schema['items']['properties'][$formProperty->getName()] = $this->resolver->resolve($formProperty)->transform($formProperty);
+                $schema['items']['title'] = ''; // remove '__name_label__'
 
                 if (!empty($formProperty->all())) {
                     $this->recursiveTransform($formProperty, $schema['items']['properties'][$formProperty->getName()]);
@@ -48,6 +49,7 @@ class CollectionTypeTransformer extends ArrayTransformer
             $schema['items'] = $this->resolver->resolve($entryType)->transform($entryType);
             foreach($entryType->all() as $formProperty) {
                 $schema['items']['properties'][$formProperty->getName()] = $this->resolver->resolve($formProperty)->transform($formProperty);
+                $schema['items']['title'] = ''; // remove '__name_label__'
 
                 if (!empty($formProperty->all())) {
                     $this->recursiveTransform($formProperty, $schema['items']['properties'][$formProperty->getName()]);
