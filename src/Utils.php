@@ -16,12 +16,12 @@ use Symfony\Component\Form\FormInterface;
 
 class Utils
 {
-    public static function getTranslationDomain(FormInterface $form): ?string
+    public static function getTranslationDomain(FormInterface $form, bool $forceParent = false): ?string
     {
         if (false === ($translationDomain = $form->getConfig()->getOption('translation_domain'))) {
             return null;
         }
-        elseif (null !== $translationDomain) {
+        elseif (false === $forceParent && null !== $translationDomain) {
             return $translationDomain;
         }
         elseif (null !== $form->getParent()) {

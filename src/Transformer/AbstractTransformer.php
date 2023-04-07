@@ -56,7 +56,7 @@ abstract class AbstractTransformer implements TransformerInterface
     private function addTitle(FormInterface $form, array &$schema): self
     {
         if (null !== ($label = $form->getConfig()->getOption('label'))) {
-            $schema['title'] = false === $label ? '' : $this->translator->trans($label, $form->getConfig()->getOption('label_translation_parameters', []), Utils::getTranslationDomain($form));
+            $schema['title'] = false === $label ? '' : $this->translate($form, $label, $form->getConfig()->getOption('label_translation_parameters', []));
         }
         else {
             $schema['title'] = null === $form->getParent() ? $form->getName() : '';
@@ -68,7 +68,7 @@ abstract class AbstractTransformer implements TransformerInterface
     private function addDescription(FormInterface $form, array &$schema): self
     {
         if (null !== ($help = $form->getConfig()->getOption('help'))) {
-            $schema['description'] = $this->translator->trans($help, $form->getConfig()->getOption('help_translation_parameters', []), Utils::getTranslationDomain($form));
+            $schema['description'] = $this->translate($form, $help, $form->getConfig()->getOption('help_translation_parameters', []));
         }
 
         return $this;
@@ -130,13 +130,24 @@ abstract class AbstractTransformer implements TransformerInterface
             $schema['options']['attr'] = $attr;
 
             if (array_key_exists('title', $schema['options']['attr'])) {
-                $schema['options']['attr']['title'] = $this->translator->trans($schema['options']['attr']['title'], $form->getConfig()->getOption('attr_translation_parameters', []), Utils::getTranslationDomain($form));
+                $schema['options']['attr']['title'] = $this->translate($form, $schema['options']['attr']['title'], $form->getConfig()->getOption('attr_translation_parameters', []));
             }
             if (array_key_exists('placeholder', $schema['options']['attr'])) {
-                $schema['options']['attr']['placeholder'] = $this->translator->trans($schema['options']['attr']['placeholder'], $form->getConfig()->getOption('attr_translation_parameters', []), Utils::getTranslationDomain($form));
+                $schema['options']['attr']['placeholder'] = $this->translate($form, $schema['options']['attr']['placeholder'], $form->getConfig()->getOption('attr_translation_parameters', []));
             }
         }
 
         return $this;
+    }
+
+    private function translate(FormInterface $form, ?string $translation, array $translationParameters = []): string
+    {
+        $translated = $this->translator->trans($translation, $translationParameters, $translationDomain = Utils::getTranslationDomain($form));
+
+        if (false !== $translation && null !== $translationDomain && $translation === $translated) {
+            $translated = $this->translator->trans($translation, $translationParameters, Utils::getTranslationDomain($form, true));
+        }
+
+        return is_string($translated) ? $translated : '';
     }
 }
