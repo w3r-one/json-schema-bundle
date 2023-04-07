@@ -140,7 +140,7 @@ abstract class AbstractTransformer implements TransformerInterface
         return $this;
     }
 
-    private function translate(FormInterface $form, ?string $translation, array $translationParameters = []): string
+    protected function translate(FormInterface $form, ?string $translation, array $translationParameters = []): string
     {
         $translated = $this->translator->trans($translation, $translationParameters, $translationDomain = Utils::getTranslationDomain($form));
 

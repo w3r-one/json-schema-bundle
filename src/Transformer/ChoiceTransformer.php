@@ -25,7 +25,7 @@ class ChoiceTransformer extends AbstractTransformer
             'multiple' => $form->getConfig()->getOption('multiple', false),
         ];
         if (!empty($placeholder = $form->getConfig()->getOption('placeholder'))) {
-            $schema['options']['choice']['placeholder'] = $this->translator->trans($placeholder, $form->getConfig()->getOption('attr_translation_parameters', []), Utils::getTranslationDomain($form));
+            $schema['options']['choice']['placeholder'] = $this->translate($form, $placeholder, $form->getConfig()->getOption('attr_translation_parameters', []));
         }
         if (!empty($preferredChoices = $form->getConfig()->getOption('preferred_choices'))) {
             $schema['options']['choice']['preferredChoices'] = $preferredChoices;
@@ -37,11 +37,11 @@ class ChoiceTransformer extends AbstractTransformer
             if ($choiceView instanceof ChoiceGroupView) {
                 foreach ($choiceView->choices as $choiceItem) {
                     $enums[] = $choiceItem->value;
-                    $enumTitles[] = $this->translator->trans($choiceItem->label, $choiceView->labelTranslationParameters ?? [], Utils::getTranslationDomain($form));
+                    $enumTitles[] = $this->translate($form, $choiceItem->label, $choiceItem->labelTranslationParameters ?? []);
                 }
             } else {
                 $enums[] = $choiceView->value;
-                $enumTitles[] = $this->translator->trans($choiceView->label, $choiceView->labelTranslationParameters ?? [], Utils::getTranslationDomain($form));
+                $enumTitles[] = $this->translate($form, $choiceView->label, $choiceView->labelTranslationParameters ?? []);
             }
         }
 
