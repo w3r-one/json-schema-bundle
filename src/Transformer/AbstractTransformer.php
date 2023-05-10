@@ -105,12 +105,10 @@ abstract class AbstractTransformer implements TransformerInterface
     {
         $widget = Utils::getWidget($form);
 
-        if (!array_key_exists('options', $schema)) {
-            $schema['options'] = [
-                'widget' => !empty($widget) ? $widget : 'text',
-                'layout' => $form->getConfig()->getOption('w3r_one_json_schema')['layout'] ?? $this->resolver->getDefaultLayout(),
-            ];
-        }
+        $schema['options'] = array_merge($schema['options'] ?? [], [
+            'widget' => !empty($widget) ? $widget : 'text',
+            'layout' => $form->getConfig()->getOption('w3r_one_json_schema')['layout'] ?? $this->resolver->getDefaultLayout(),
+        ]);
 
         return $this;
     }
@@ -118,7 +116,7 @@ abstract class AbstractTransformer implements TransformerInterface
     private function addCustomOptions(FormInterface $form, array &$schema): self
     {
         if (null !== ($customOptions = $form->getConfig()->getOption('w3r_one_json_schema'))) {
-            $schema['options'] = array_merge($schema['options'], $customOptions);
+            $schema['options'] = array_merge($schema['options'] ?? [], $customOptions);
         }
 
         return $this;
@@ -127,6 +125,9 @@ abstract class AbstractTransformer implements TransformerInterface
     private function addAttr(FormInterface $form, array &$schema): self
     {
         if (!empty($attr = $form->getConfig()->getOption('attr'))) {
+            if (!array_key_exists('options', $schema)) {
+                $schema['options'] = [];
+            }
             $schema['options']['attr'] = $attr;
 
             if (array_key_exists('title', $schema['options']['attr'])) {
