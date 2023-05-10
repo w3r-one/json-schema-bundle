@@ -34,8 +34,15 @@ class DateTimeTransformer extends ObjectTransformer
             if (null !== $form->getConfig()->getOption('model_timezone')) {
                 $schema['options']['date_time']['modelTimezone'] = null !== ($modelTimezone = $form->getConfig()->getOption('model_timezone')) ? $modelTimezone : date_default_timezone_get();
             }
-            if (null !== $form->getConfig()->getOption('placeholder')) {
-                $schema['options']['date_time']['placeholder'] = $form->getConfig()->getOption('placeholder');
+            if (null !== ($placeholder = $form->getConfig()->getOption('placeholder'))) {
+                if (is_array($placeholder)) {
+                    foreach($placeholder as $key => $value) {
+                        $schema['options']['date_time']['placeholder'][$key] = $this->translate($form, $value, $form->getConfig()->getOption('choice_translation_parameters', []));
+                    }
+                }
+                else {
+                    $schema['options']['date_time']['placeholder'] = $this->translate($form, $placeholder, $form->getConfig()->getOption('choice_translation_parameters', []));
+                }
             }
         }
         if (null === ($form->getConfig()->getOption('w3r_one_json_schema')['widget'] ?? null)) {
