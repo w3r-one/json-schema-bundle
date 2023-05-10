@@ -25,7 +25,7 @@ class ChoiceTransformer extends AbstractTransformer
             'multiple' => $form->getConfig()->getOption('multiple', false),
         ];
         if (!empty($placeholder = $form->getConfig()->getOption('placeholder'))) {
-            $schema['options']['choice']['placeholder'] = $this->translate($form, $placeholder, $form->getConfig()->getOption('attr_translation_parameters', []));
+            $schema['options']['choice']['placeholder'] = $this->translate($form, $placeholder, $form->getConfig()->getOption('choice_translation_parameters', []));
         }
         if (!empty($preferredChoices = $form->getConfig()->getOption('preferred_choices'))) {
             $schema['options']['choice']['preferredChoices'] = $preferredChoices;
