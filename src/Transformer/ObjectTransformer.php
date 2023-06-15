@@ -19,8 +19,8 @@ class ObjectTransformer extends AbstractTransformer
 {
     public function transform(FormInterface $form): array
     {
-        // nested compound object
-        if (null !== $form->getParent()) {
+        // nested compound object or prototype
+        if (null !== $form->getParent() || '__name__' === $form->getName()) {
             $schema = parent::transform($form);
             $schema['properties'] = [];
             $schema['type'] = 'object';
