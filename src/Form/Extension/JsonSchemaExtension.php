@@ -28,7 +28,7 @@ class JsonSchemaExtension extends AbstractTypeExtension
     /**
      * @inheritdoc
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefined(['w3r_one_json_schema']);
     }
