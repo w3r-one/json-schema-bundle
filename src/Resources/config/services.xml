@@ -8,18 +8,14 @@
             <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType" />
         </service>
 
-        <service id="w3r_one_json_schema.resolver" class="W3rOne\JsonSchemaBundle\Resolver">
-            <argument type="service" id="request_stack" />
-            <argument type="service" id="security.csrf.token_manager" />
-            <argument type="service" id="translator.default" />
+        <service id="W3rOne\JsonSchemaBundle\Resolver" public="true">
             <argument>%w3r_one_json_schema.default_layout%</argument>
-            <argument>%w3r_one_json_schema.transformer_namespaces%</argument>
         </service>
-        <service id="W3rOne\JsonSchemaBundle\Resolver" alias="w3r_one_json_schema.resolver" />
+        <service id="w3r_one_json_schema.resolver" alias="W3rOne\JsonSchemaBundle\Resolver" public="true" />
 
-        <service id="w3r_one_json_schema.json_schema" class="W3rOne\JsonSchemaBundle\JsonSchema" public="true">
+        <service id="W3rOne\JsonSchemaBundle\JsonSchema" public="true">
             <argument type="service" id="w3r_one_json_schema.resolver" />
         </service>
-        <service id="W3rOne\JsonSchemaBundle\JsonSchema" alias="w3r_one_json_schema.json_schema" public="true" />
+        <service id="w3r_one_json_schema.json_schema" alias="W3rOne\JsonSchemaBundle\JsonSchema" public="true" />
     </services>
 </container>

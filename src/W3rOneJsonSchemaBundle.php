@@ -11,8 +11,16 @@
 
 namespace W3rOne\JsonSchemaBundle;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use W3rOne\JsonSchemaBundle\DependencyInjection\Compiler\TransformerCompilerPass;
 
 class W3rOneJsonSchemaBundle extends Bundle
 {
+    public function build(ContainerBuilder $container): void
+    {
+        parent::build($container);
+
+        $container->addCompilerPass(new TransformerCompilerPass());
+    }
 }

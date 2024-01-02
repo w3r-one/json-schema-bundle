@@ -13,48 +13,41 @@ namespace W3rOne\JsonSchemaBundle;
 
 use W3rOne\JsonSchemaBundle\Exception\TransformerException;
 use W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer;
-use W3rOne\JsonSchemaBundle\Transformer\ObjectTransformer;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 class Resolver
 {
-    private $requestStack;
+    private string $defaultLayout;
 
-    private $csrfTokenManager;
+    public array $transformers = [];
 
-    private $translator;
-
-    private $defaultLayout;
-
-    private $transformerNamespaces;
-
-    public function __construct(RequestStack $requestStack, CsrfTokenManagerInterface $csrfTokenManager, TranslatorInterface $translator, string $defaultLayout, array $transformerNamespaces)
+    public function __construct(string $defaultLayout)
     {
-        $this->requestStack = $requestStack;
-        $this->csrfTokenManager = $csrfTokenManager;
-        $this->translator = $translator;
         $this->defaultLayout = $defaultLayout;
-        $this->transformerNamespaces = $transformerNamespaces;
-        $this->transformerNamespaces[] = __NAMESPACE__ . '\\Transformer\\Type\\';
+    }
+
+    public function addTransformer(AbstractTransformer $transformer, string $formType): void
+    {
+        if (!array_key_exists($formType, $this->transformers)) {
+            $this->transformers[$formType] = $transformer;
+        }
     }
 
     public function resolve(FormInterface $form): AbstractTransformer
     {
-        $fqnFormType = get_class($form->getConfig()->getType()->getInnerType());
-        $fqnParentFormType = $form->getConfig()->getType()->getInnerType()->getParent();
+        $formTypes = [
+            Utils::getFormType(get_class($form->getConfig()->getType()->getInnerType())),
+            Utils::getFormType($form->getConfig()->getType()->getInnerType()->getParent())
+        ];
 
-        foreach($this->transformerNamespaces as $namespace) {
-            if (class_exists($formTypeTransformer = $namespace . Utils::substrAfterLastDelimiter($fqnFormType, '\\') . 'Transformer')) {
-                return new $formTypeTransformer($this->requestStack, $this->csrfTokenManager, $this->translator, $this);
-            } elseif (null !== $fqnParentFormType && class_exists($formTypeTransformer = $namespace . Utils::substrAfterLastDelimiter($fqnParentFormType, '\\') . 'Transformer')) {
-                return new $formTypeTransformer($this->requestStack, $this->csrfTokenManager, $this->translator, $this);
+        foreach($formTypes as $formType) {
+            if (isset($this->transformers[$formType])) {
+                return $this->transformers[$formType];
             }
         }
+
         if (true === $form->getConfig()->getOption('compound', false)) {
-            return new ObjectTransformer($this->requestStack, $this->csrfTokenManager, $this->translator, $this);
+            return $this->transformers['object'];
         }
 
         throw new TransformerException(sprintf('Unable to find a transformer for type `%s`.', $fqnFormType));

@@ -17,7 +17,7 @@ use Symfony\Component\Form\FormInterface;
 
 class JsonSchema
 {
-    private $resolver;
+    private Resolver $resolver;
 
     public function __construct(Resolver $resolver)
     {

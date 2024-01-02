@@ -27,9 +27,9 @@ class W3rOneJsonSchemaExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('w3r_one_json_schema.default_layout', $config['default_layout']);
-        $container->setParameter('w3r_one_json_schema.transformer_namespaces', $config['transformer_namespaces']);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
+        $loader->load('transformers.xml');
     }
 }

@@ -1,0 +1,137 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer" abstract="true">
+            <argument type="service" id="request_stack" />
+            <argument type="service" id="security.csrf.token_manager" />
+            <argument type="service" id="translator.default" />
+            <argument type="service" id="w3r_one_json_schema.resolver" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.object" class="W3rOne\JsonSchemaBundle\Transformer\ObjectTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="object" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.autocomplete" class="W3rOne\JsonSchemaBundle\Transformer\Type\AutocompleteTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="autocomplete" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.birthday" class="W3rOne\JsonSchemaBundle\Transformer\Type\BirthdayTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="birthday" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.button" class="W3rOne\JsonSchemaBundle\Transformer\Type\ButtonTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="button" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.checkbox" class="W3rOne\JsonSchemaBundle\Transformer\Type\CheckboxTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="checkbox" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.choice" class="W3rOne\JsonSchemaBundle\Transformer\Type\ChoiceTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="choice" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.collection" class="W3rOne\JsonSchemaBundle\Transformer\Type\CollectionTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="collection" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.color" class="W3rOne\JsonSchemaBundle\Transformer\Type\ColorTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="color" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.country" class="W3rOne\JsonSchemaBundle\Transformer\Type\CountryTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="country" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.currency" class="W3rOne\JsonSchemaBundle\Transformer\Type\CurrencyTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="currency" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.date_interval" class="W3rOne\JsonSchemaBundle\Transformer\Type\DateIntervalTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="date_interval" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.date_time" class="W3rOne\JsonSchemaBundle\Transformer\Type\DateTimeTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="date_time" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.date" class="W3rOne\JsonSchemaBundle\Transformer\Type\DateTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="date" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.email" class="W3rOne\JsonSchemaBundle\Transformer\Type\EmailTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="email" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.entity" class="W3rOne\JsonSchemaBundle\Transformer\Type\EntityTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="entity" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.enum" class="W3rOne\JsonSchemaBundle\Transformer\Type\EnumTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="enum" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.file" class="W3rOne\JsonSchemaBundle\Transformer\Type\FileTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="file" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.hidden" class="W3rOne\JsonSchemaBundle\Transformer\Type\HiddenTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="hidden" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.integer" class="W3rOne\JsonSchemaBundle\Transformer\Type\IntegerTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="integer" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.language" class="W3rOne\JsonSchemaBundle\Transformer\Type\LanguageTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="language" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.locale" class="W3rOne\JsonSchemaBundle\Transformer\Type\LocaleTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="locale" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.money" class="W3rOne\JsonSchemaBundle\Transformer\Type\MoneyTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="money" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.number" class="W3rOne\JsonSchemaBundle\Transformer\Type\NumberTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="number" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.password" class="W3rOne\JsonSchemaBundle\Transformer\Type\PasswordTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="password" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.percent" class="W3rOne\JsonSchemaBundle\Transformer\Type\PercentTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="percent" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.radio" class="W3rOne\JsonSchemaBundle\Transformer\Type\RadioTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="radio" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.range" class="W3rOne\JsonSchemaBundle\Transformer\Type\RangeTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="range" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.repeated" class="W3rOne\JsonSchemaBundle\Transformer\Type\RepeatedTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="repeated" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.reset" class="W3rOne\JsonSchemaBundle\Transformer\Type\ResetTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="reset" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.search" class="W3rOne\JsonSchemaBundle\Transformer\Type\SearchTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="search" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.submit" class="W3rOne\JsonSchemaBundle\Transformer\Type\SubmitTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="submit" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.tel" class="W3rOne\JsonSchemaBundle\Transformer\Type\TelTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="tel" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.textarea" class="W3rOne\JsonSchemaBundle\Transformer\Type\TextareaTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="textarea" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.text" class="W3rOne\JsonSchemaBundle\Transformer\Type\TextTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="text" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.time" class="W3rOne\JsonSchemaBundle\Transformer\Type\TimeTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="time" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.timezone" class="W3rOne\JsonSchemaBundle\Transformer\Type\TimezoneTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="timezone" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.ulid" class="W3rOne\JsonSchemaBundle\Transformer\Type\UlidTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="ulid" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.url" class="W3rOne\JsonSchemaBundle\Transformer\Type\UrlTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="url" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.url" class="W3rOne\JsonSchemaBundle\Transformer\Type\UrlTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="url" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.uuid" class="W3rOne\JsonSchemaBundle\Transformer\Type\UuidTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="uuid" />
+        </service>
+        <service id="w3r_one_json_schema.transformer.week" class="W3rOne\JsonSchemaBundle\Transformer\Type\WeekTypeTransformer" parent="W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer">
+            <tag name="w3r_one_json_schema.transformer" form_type="week" />
+        </service>
+    </services>
+</container>

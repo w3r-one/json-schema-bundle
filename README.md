@@ -243,18 +243,18 @@ This bundle doesn't provide any Front-End component, feel free to choose the sta
 ### Logic
 
 * Back-End
-  * Create your FormType as usual (it can include dynamic fiels, ACL, business rules, FormEvents, etc.)
-  * Extend it if needed (through `w3r_one_json_schema` or your own Transformers)
-  * Optional: sending it to the view and display/test it directly in Twig
-  * Serialize the Form into a JSON Schema and send it to the view
-  * Optional: serialize the initial data as well to hydrate your form data
+    * Create your FormType as usual (it can include dynamic fiels, ACL, business rules, FormEvents, etc.)
+    * Extend it if needed (through `w3r_one_json_schema` or your own Transformers)
+    * Optional: sending it to the view and display/test it directly in Twig
+    * Serialize the Form into a JSON Schema and send it to the view
+    * Optional: serialize the initial data as well to hydrate your form data
 * Front-End
-  * Create the main form (`options.form.method` + `options.form.action`)
-  * Iterate recursively on all sub properties to create the complete form.
-  * Map each child with the correct JS component thanks to `options.widget` (+ `options.layout` if needed)
-  * Optional: hydrate each field value with initial data
-  * Handle submit on XHR (custom HTTP header `X-Requested-With: XMLHttpRequest` thanks to `options.form.async`) or normally
-  * Display errors if any - else a flash message / redirect the user
+    * Create the main form (`options.form.method` + `options.form.action`)
+    * Iterate recursively on all sub properties to create the complete form.
+    * Map each child with the correct JS component thanks to `options.widget` (+ `options.layout` if needed)
+    * Optional: hydrate each field value with initial data
+    * Handle submit on XHR (custom HTTP header `X-Requested-With: XMLHttpRequest` thanks to `options.form.async`) or normally
+    * Display errors if any - else a flash message / redirect the user
 
 ### Concrete exemple
 
@@ -375,17 +375,17 @@ The [resolver](src/Resolver.php) will traverse the form, guess the right Transfo
 
 **Legend**
 * Transformers
-  * Black: Base transformer
-  * Yellow: Json Schema native transformers
-  * Orange: Intermediate transformers
-  * White: Symfony Form Type' transformers
+    * Black: Base transformer
+    * Yellow: Json Schema native transformers
+    * Orange: Intermediate transformers
+    * White: Symfony Form Type' transformers
 * Relations:
-  * Red: direct inheritance
-  * Blue: indirect inheritance depending on a specific FormType's option, e.g.
-    * `widget` for the Date types
-    * `multiple` for the Choice type
-    * `input` for `NumberType`
-    * `fractional` for `PercentType`
+    * Red: direct inheritance
+    * Blue: indirect inheritance depending on a specific FormType's option, e.g.
+        * `widget` for the Date types
+        * `multiple` for the Choice type
+        * `input` for `NumberType`
+        * `fractional` for `PercentType`
 
 You can add your own transformers, or override/extend the transformers of your choice by yourself, see the dedicated section of this readme.
 
@@ -487,33 +487,33 @@ All non standards properties are wrapped into `options` property.
 
 It includes:
 * `widget` property to identify the widget behind the component
-  * it's the FormType name in snake_case, basically `CustomCollectionType` will give you the widget `custom_collection`
-  * the only exception is related to all date's FormTypes where we suffix the javascript widget by the `widget` FormType's option. It can give you very different components:
-    * [`DateType`](https://symfony.com/doc/current/reference/forms/types/date.html#widget)
-      * `date_choice`
-      * `date_text`
-      * `date_single_text`
-    * [`DateTimeType`](https://symfony.com/doc/current/reference/forms/types/datetime.html#widget)
-        * `date_time_choice`
-        * `date_time_text`
-        * `date_time_single_text`
-    * [`TimeType`](https://symfony.com/doc/current/reference/forms/types/time.html#widget)
-        * `time_choice`
-        * `time_text`
-        * `time_single_text`
-    * [`WeekType`](https://symfony.com/doc/current/reference/forms/types/week.html#widget)
-        * `week_choice`
-        * `week_text`
-        * `week_single_text`
-    * [`BirthdayType`](https://symfony.com/doc/current/reference/forms/types/birthday.html#widget)
-        * `birthday_choice`
-        * `birthday_text`
-        * `birthday_single_text`
-    * [`DateIntervalType`](https://symfony.com/doc/current/reference/forms/types/dateinterval.html#widget)
-        * `date_interval_choice`
-        * `date_interval_text`
-        * `date_interval_integer`
-        * `date_interval_single_text`
+    * it's the FormType name in snake_case, basically `CustomCollectionType` will give you the widget `custom_collection`
+    * the only exception is related to all date's FormTypes where we suffix the javascript widget by the `widget` FormType's option. It can give you very different components:
+        * [`DateType`](https://symfony.com/doc/current/reference/forms/types/date.html#widget)
+            * `date_choice`
+            * `date_text`
+            * `date_single_text`
+        * [`DateTimeType`](https://symfony.com/doc/current/reference/forms/types/datetime.html#widget)
+            * `date_time_choice`
+            * `date_time_text`
+            * `date_time_single_text`
+        * [`TimeType`](https://symfony.com/doc/current/reference/forms/types/time.html#widget)
+            * `time_choice`
+            * `time_text`
+            * `time_single_text`
+        * [`WeekType`](https://symfony.com/doc/current/reference/forms/types/week.html#widget)
+            * `week_choice`
+            * `week_text`
+            * `week_single_text`
+        * [`BirthdayType`](https://symfony.com/doc/current/reference/forms/types/birthday.html#widget)
+            * `birthday_choice`
+            * `birthday_text`
+            * `birthday_single_text`
+        * [`DateIntervalType`](https://symfony.com/doc/current/reference/forms/types/dateinterval.html#widget)
+            * `date_interval_choice`
+            * `date_interval_text`
+            * `date_interval_integer`
+            * `date_interval_single_text`
 * `layout` property to apply a specific layout to the component (default `default`, can be overridden by `w3r_one_json_schema.layout`)
 * `attr` all the HTML attributes defined in the FormType
 * at parent level, a `form` property with:
@@ -636,21 +636,22 @@ w3r_one_json_schema:
 
 ### FormType Transformers
 
-You can register your namespace(s) that store your own transformers.
+You can register your own transformers.
+
+Tag them with the name `w3r_one_json_schema.transformer` and define the `form_type` you want to transform.
 
 ```yaml
-# config/packages/w3r_one_json_schema.yaml
-w3r_one_json_schema:
-    transformer_namespaces:
-        - 'App\JsonSchema\'
-        # - 'App\OtherJsonSchema\'
+# config/services.yaml
+services:
+    App\JsonSchema\DateIntervalTypeTransformer:
+        parent: W3rOne\JsonSchemaBundle\Transformer\AbstractTransformer
+        tags:
+            - { name: w3r_one_json_schema.transformer, form_type: 'date_interval'}
 ```
 
 Your transformers are resolved **before ours**, so if you override an existing transformer, it'll be executed in place of the bundle built-in ones.
 
-Transformers **must** implement the [TransformerInterface](src/Transformer/TransformerInterface.php) and must have the pattern {**FormType**}Transformer.php.
-
-For example if you want to override the Symfony `DateIntervalType`, your transformer must be named `DateIntervalTypeTransformer`.
+Transformers **must** implement the [TransformerInterface](src/Transformer/TransformerInterface.php).
 
 The proper approach is to extend one of ours abstract or specific transformers, redefine method `transform`, call the parent function and extending/overwriting the json schema before returning it.
 

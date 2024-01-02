@@ -128,4 +128,9 @@ class Utils
 
         return implode($delimiter, array_slice($exploded, 1 === $count ? 0 : 1, max(1, $count - 1)));
     }
+
+    public static function getFormType(string $fqnFormType): string
+    {
+        return mb_strtolower(preg_replace('~(?<=\\w)([A-Z])~u', '_$1', self::substrBeforeLastDelimiter(self::substrAfterLastDelimiter($fqnFormType, '\\'), 'Type')));
+    }
 }

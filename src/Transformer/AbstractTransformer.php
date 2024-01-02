@@ -20,13 +20,13 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 abstract class AbstractTransformer implements TransformerInterface
 {
-    protected $requestStack;
+    protected RequestStack $requestStack;
 
-    protected $csrfTokenManager;
+    protected CsrfTokenManagerInterface $csrfTokenManager;
 
-    protected $translator;
+    protected TranslatorInterface $translator;
 
-    protected $resolver;
+    protected Resolver $resolver;
 
     public function __construct(RequestStack $requestStack, CsrfTokenManagerInterface $csrfTokenManager, TranslatorInterface $translator, Resolver $resolver)
     {

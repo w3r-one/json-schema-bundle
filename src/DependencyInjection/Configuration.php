@@ -27,7 +27,6 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('default_layout')->info('The default layout applied to all your components.')->defaultValue('default')->end()
-                ->arrayNode('transformer_namespaces')->info('The array of additional transformers namespaces to load.')->beforeNormalization()->ifString()->then(function ($v) { return [$v]; })->end()->prototype('scalar')->end()->defaultValue([])
                 ->end()
             ->end();
 
