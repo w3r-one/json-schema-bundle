@@ -16,11 +16,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class ResetTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = ResetType::class;
+    protected static string $formType = ResetType::class;
 
-    protected static $type = 'boolean';
+    protected static string $type = 'boolean';
 
-    protected static $widget = 'reset';
+    protected static string $widget = 'reset';
 
     public function testBase()
     {

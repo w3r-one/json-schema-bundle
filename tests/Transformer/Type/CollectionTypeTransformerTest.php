@@ -18,11 +18,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class CollectionTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = CollectionType::class;
+    protected static string $formType = CollectionType::class;
 
-    protected static $type = 'array';
+    protected static string $type = 'array';
 
-    protected static $widget = 'collection';
+    protected static string $widget = 'collection';
 
     public function testBase()
     {

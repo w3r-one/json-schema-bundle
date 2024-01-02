@@ -16,9 +16,9 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class DateTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = DateType::class;
+    protected static string $formType = DateType::class;
 
-    protected static $type = 'object';
+    protected static string $type = 'object';
 
     public function testWidgetChoice()
     {

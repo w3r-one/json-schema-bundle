@@ -16,11 +16,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class UuidTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = UuidType::class;
+    protected static string $formType = UuidType::class;
 
-    protected static $type = 'string';
+    protected static string $type = 'string';
 
-    protected static $widget = 'uuid';
+    protected static string $widget = 'uuid';
 
     public function testBase()
     {

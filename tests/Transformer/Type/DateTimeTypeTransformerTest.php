@@ -16,11 +16,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class DateTimeTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = DateTimeType::class;
+    protected static string $formType = DateTimeType::class;
 
-    protected static $type = 'object';
+    protected static string $type = 'object';
 
-    public function testWidgetChoice($timeParts = ['hour', 'minute', 'second'])
+    public function testWidgetChoice(array $timeParts = ['hour', 'minute', 'second'])
     {
         $this->common(self::$formType, self::$property, self::$type, 'date_time_choice', null, [
             'widget' => 'choice',
@@ -60,7 +60,7 @@ class DateTimeTypeTransformerTest extends BaseTransformerTest
         $this->testWidgetChoice(['hour']);
     }
 
-    public function testWidgetText($timeParts = ['hour', 'minute', 'second'])
+    public function testWidgetText(array $timeParts = ['hour', 'minute', 'second'])
     {
         $this->common(self::$formType, self::$property, self::$type, 'date_time_text', null, [
             'widget' => 'text',

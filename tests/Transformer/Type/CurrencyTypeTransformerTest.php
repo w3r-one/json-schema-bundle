@@ -16,13 +16,13 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class CurrencyTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = CurrencyType::class;
+    protected static string $formType = CurrencyType::class;
 
-    protected static $type = 'string';
+    protected static string $type = 'string';
 
-    protected static $widget = 'currency';
+    protected static string $widget = 'currency';
 
-    public function testUnique($expanded = false)
+    public function testUnique(bool $expanded = false)
     {
         $this->common(self::$formType, self::$property, self::$type, self::$widget, null, [
             'expanded' => $expanded,
@@ -41,7 +41,7 @@ class CurrencyTypeTransformerTest extends BaseTransformerTest
         $this->testUnique(true);
     }
 
-    public function testMultiple($expanded = false)
+    public function testMultiple(bool $expanded = false)
     {
         $this->common(self::$formType, self::$property, 'array', self::$widget, null, [
             'expanded' => $expanded,

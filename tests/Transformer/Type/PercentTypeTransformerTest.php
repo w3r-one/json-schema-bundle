@@ -16,11 +16,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class PercentTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = PercentType::class;
+    protected static string $formType = PercentType::class;
 
-    protected static $type = 'string';
+    protected static string $type = 'string';
 
-    protected static $widget = 'percent';
+    protected static string $widget = 'percent';
 
     public function testTypeString()
     {

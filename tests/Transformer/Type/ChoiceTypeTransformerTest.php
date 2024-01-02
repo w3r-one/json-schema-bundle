@@ -16,13 +16,13 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class ChoiceTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = ChoiceType::class;
+    protected static string $formType = ChoiceType::class;
 
-    protected static $type = 'string';
+    protected static string $type = 'string';
 
-    protected static $widget = 'choice';
+    protected static string $widget = 'choice';
 
-    public function testUnique($expanded = false)
+    public function testUnique(bool $expanded = false)
     {
         $this->common(self::$formType, self::$property, self::$type, self::$widget, null, [
             'expanded' => $expanded,
@@ -48,7 +48,7 @@ class ChoiceTypeTransformerTest extends BaseTransformerTest
         $this->testUnique(true);
     }
 
-    public function testMultiple($expanded = false)
+    public function testMultiple(bool $expanded = false)
     {
         $this->common(self::$formType, self::$property, 'array', self::$widget, null, [
             'expanded' => $expanded,

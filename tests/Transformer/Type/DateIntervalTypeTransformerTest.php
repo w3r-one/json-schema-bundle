@@ -16,11 +16,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class DateIntervalTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = DateIntervalType::class;
+    protected static string $formType = DateIntervalType::class;
 
-    protected static $type = 'object';
+    protected static string $type = 'object';
 
-    public function testWidgetChoice($parts = ['years', 'months', 'days'])
+    public function testWidgetChoice(array $parts = ['years', 'months', 'days'])
     {
         $this->common(self::$formType, self::$property, self::$type, 'date_interval_choice', null, [
             'widget' => 'choice',
@@ -58,7 +58,7 @@ class DateIntervalTypeTransformerTest extends BaseTransformerTest
         $this->testWidgetChoice(['weeks']);
     }
 
-    public function testWidgetText($parts = ['years', 'months', 'days'])
+    public function testWidgetText(array $parts = ['years', 'months', 'days'])
     {
         $this->common(self::$formType, self::$property, self::$type, 'date_interval_text', null, [
             'widget' => 'text',

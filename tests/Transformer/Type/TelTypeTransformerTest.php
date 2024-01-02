@@ -16,11 +16,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class TelTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = TelType::class;
+    protected static string $formType = TelType::class;
 
-    protected static $type = 'string';
+    protected static string $type = 'string';
 
-    protected static $widget = 'tel';
+    protected static string $widget = 'tel';
 
     public function testBase()
     {

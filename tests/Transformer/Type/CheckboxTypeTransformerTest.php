@@ -16,11 +16,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class CheckboxTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = CheckboxType::class;
+    protected static string $formType = CheckboxType::class;
 
-    protected static $type = 'boolean';
+    protected static string $type = 'boolean';
 
-    protected static $widget = 'checkbox';
+    protected static string $widget = 'checkbox';
 
     public function testBase()
     {

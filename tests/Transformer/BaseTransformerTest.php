@@ -19,7 +19,7 @@ use W3rOne\JsonSchemaBundle\Tests\JsonSchemaTestCase;
 
 class BaseTransformerTest extends JsonSchemaTestCase
 {
-    protected static $property = 'property';
+    protected static string $property = 'property';
 
     public function test()
     {

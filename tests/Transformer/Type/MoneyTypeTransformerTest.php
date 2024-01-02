@@ -16,11 +16,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class MoneyTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = MoneyType::class;
+    protected static string $formType = MoneyType::class;
 
-    protected static $type = 'string';
+    protected static string $type = 'string';
 
-    protected static $widget = 'money';
+    protected static string $widget = 'money';
 
     public function testBase()
     {

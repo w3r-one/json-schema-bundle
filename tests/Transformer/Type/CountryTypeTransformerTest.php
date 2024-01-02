@@ -16,11 +16,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class CountryTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = CountryType::class;
+    protected static string $formType = CountryType::class;
 
-    protected static $type = 'string';
+    protected static string $type = 'string';
 
-    protected static $widget = 'country';
+    protected static string $widget = 'country';
 
     public function testUnique($expanded = false)
     {

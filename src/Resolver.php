@@ -37,7 +37,7 @@ class Resolver
     {
         $formTypes = [
             Utils::getFormType(get_class($form->getConfig()->getType()->getInnerType())),
-            Utils::getFormType($form->getConfig()->getType()->getInnerType()->getParent())
+            Utils::getFormType($form->getConfig()->getType()->getInnerType()->getParent() ?? '')
         ];
 
         foreach($formTypes as $formType) {
@@ -50,7 +50,7 @@ class Resolver
             return $this->transformers['object'];
         }
 
-        throw new TransformerException(sprintf('Unable to find a transformer for type `%s`.', $fqnFormType));
+        throw new TransformerException(sprintf('Unable to find a transformer for type `%s`.', get_class($form->getConfig()->getType()->getInnerType())));
     }
 
     public function getDefaultLayout(): string

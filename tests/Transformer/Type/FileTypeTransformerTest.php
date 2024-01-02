@@ -16,11 +16,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class FileTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = FileType::class;
+    protected static string $formType = FileType::class;
 
-    protected static $type = 'string';
+    protected static string $type = 'string';
 
-    protected static $widget = 'file';
+    protected static string $widget = 'file';
 
     public function testBase()
     {

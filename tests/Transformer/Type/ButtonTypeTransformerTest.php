@@ -16,11 +16,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class ButtonTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = ButtonType::class;
+    protected static string $formType = ButtonType::class;
 
-    protected static $type = 'boolean';
+    protected static string $type = 'boolean';
 
-    protected static $widget = 'button';
+    protected static string $widget = 'button';
 
     public function testBase()
     {

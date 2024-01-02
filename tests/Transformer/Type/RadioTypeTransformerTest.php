@@ -16,11 +16,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class RadioTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = RadioType::class;
+    protected static string $formType = RadioType::class;
 
-    protected static $type = 'string';
+    protected static string $type = 'string';
 
-    protected static $widget = 'radio';
+    protected static string $widget = 'radio';
 
     public function testBase()
     {

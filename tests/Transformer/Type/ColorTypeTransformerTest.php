@@ -16,11 +16,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class ColorTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = ColorType::class;
+    protected static string $formType = ColorType::class;
 
-    protected static $type = 'string';
+    protected static string $type = 'string';
 
-    protected static $widget = 'color';
+    protected static string $widget = 'color';
 
     public function testBase()
     {

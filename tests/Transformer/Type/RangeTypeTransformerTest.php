@@ -16,11 +16,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class RangeTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = RangeType::class;
+    protected static string $formType = RangeType::class;
 
-    protected static $type = 'number';
+    protected static string $type = 'number';
 
-    protected static $widget = 'range';
+    protected static string $widget = 'range';
 
     public function testBase()
     {

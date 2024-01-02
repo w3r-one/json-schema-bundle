@@ -16,9 +16,9 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class WeekTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = WeekType::class;
+    protected static string $formType = WeekType::class;
 
-    protected static $type = 'object';
+    protected static string $type = 'object';
 
     public function testWidgetChoice()
     {

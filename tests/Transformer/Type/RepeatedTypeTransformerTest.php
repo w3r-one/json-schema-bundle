@@ -18,11 +18,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class RepeatedTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = RepeatedType::class;
+    protected static string $formType = RepeatedType::class;
 
-    protected static $type = 'object';
+    protected static string $type = 'object';
 
-    protected static $widget = 'repeated';
+    protected static string $widget = 'repeated';
 
     public function testBase()
     {

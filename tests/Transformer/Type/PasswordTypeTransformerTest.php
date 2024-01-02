@@ -16,11 +16,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class PasswordTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = PasswordType::class;
+    protected static string $formType = PasswordType::class;
 
-    protected static $type = 'string';
+    protected static string $type = 'string';
 
-    protected static $widget = 'password';
+    protected static string $widget = 'password';
 
     public function testBase()
     {

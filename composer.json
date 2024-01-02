@@ -1,50 +1,51 @@
 {
-    "name": "w3r-one/json-schema-bundle",
-    "description": "serialize Symfony Forms into JSON schema",
-    "type": "symfony-bundle",
-    "keywords": ["json schema", "Symfony", "form"],
-    "license": "MIT",
-    "minimum-stability": "stable",
-    "authors": [
-        {
-            "name": "Laurent Bientz",
-            "email": "laurent.bientz@w3r.one"
-        }
-    ],
-    "require": {
-        "php": ">=7.4",
-        "doctrine/inflector": ">=1.4",
-        "symfony/config": ">=4.4",
-        "symfony/dependency-injection": ">=4.4",
-        "symfony/form": ">=4.4",
-        "symfony/http-foundation": ">=4.4",
-        "symfony/http-kernel": ">=4.4",
-        "symfony/intl": ">=4.4",
-        "symfony/security-csrf": ">=4.4",
-        "symfony/translation": ">=4.4"
-    },
-    "require-dev": {
-      "phpunit/phpunit": "^8.0"
-    },
-    "suggest": {
-      "symfony/validator": "For form validation.",
-      "symfony/security-core": "For hashing users passwords.",
-      "symfony/serializer": "To serialize your initial data."
-    },
-    "config": {
-      "sort-packages": true,
-      "allow-plugins": {
-        "symfony/flex": true
-      }
-    },
-    "autoload": {
-        "psr-4": {
-            "W3rOne\\JsonSchemaBundle\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "W3rOne\\JsonSchemaBundle\\Tests\\": "tests/"
-        }
+  "name": "w3r-one/json-schema-bundle",
+  "description": "serialize Symfony Forms into JSON schema",
+  "type": "symfony-bundle",
+  "keywords": ["json schema", "Symfony", "form"],
+  "license": "MIT",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "Laurent Bientz",
+      "email": "laurent.bientz@w3r.one"
     }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "doctrine/inflector": ">=1.4",
+    "symfony/config": ">=4.4",
+    "symfony/dependency-injection": ">=4.4",
+    "symfony/finder": ">=4.4",
+    "symfony/form": ">=4.4",
+    "symfony/http-foundation": ">=4.4",
+    "symfony/http-kernel": ">=4.4",
+    "symfony/intl": ">=4.4",
+    "symfony/security-csrf": ">=4.4",
+    "symfony/translation": ">=4.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.0"
+  },
+  "suggest": {
+    "symfony/validator": "For form validation.",
+    "symfony/security-core": "For hashing users passwords.",
+    "symfony/serializer": "To serialize your initial data."
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "symfony/flex": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "W3rOne\\JsonSchemaBundle\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "W3rOne\\JsonSchemaBundle\\Tests\\": "tests/"
+    }
+  }
 }

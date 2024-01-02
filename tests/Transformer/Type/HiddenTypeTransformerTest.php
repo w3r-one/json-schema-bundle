@@ -16,11 +16,11 @@ use W3rOne\JsonSchemaBundle\Tests\Transformer\BaseTransformerTest;
 
 class HiddenTypeTransformerTest extends BaseTransformerTest
 {
-    protected static $formType = HiddenType::class;
+    protected static string $formType = HiddenType::class;
 
-    protected static $type = 'string';
+    protected static string $type = 'string';
 
-    protected static $widget = 'hidden';
+    protected static string $widget = 'hidden';
 
     public function testBase()
     {
