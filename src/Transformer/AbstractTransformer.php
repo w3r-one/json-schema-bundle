@@ -122,7 +122,7 @@ abstract class AbstractTransformer implements TransformerInterface
         return $this;
     }
 
-    private function addAttr(FormInterface $form, array &$schema): self
+    protected function addAttr(FormInterface $form, array &$schema): self
     {
         if (!empty($attr = $form->getConfig()->getOption('attr'))) {
             if (!array_key_exists('options', $schema)) {
@@ -143,12 +143,23 @@ abstract class AbstractTransformer implements TransformerInterface
 
     protected function translate(FormInterface $form, ?string $translation, array $translationParameters = []): string
     {
-        $translated = $this->translator->trans($translation ?? '', $translationParameters, $translationDomain = Utils::getTranslationDomain($form));
+        $globalFormLocale = $this->extractFormLocale($form);
+
+        $translated = $this->translator->trans($translation ?? '', $translationParameters, $translationDomain = Utils::getTranslationDomain($form), $globalFormLocale);
 
         if (false !== $translation && null !== $translationDomain && $translation === $translated) {
-            $translated = $this->translator->trans($translation ?? '', $translationParameters, Utils::getTranslationDomain($form, true));
+            $translated = $this->translator->trans($translation ?? '', $translationParameters, Utils::getTranslationDomain($form, true), $globalFormLocale);
         }
 
         return is_string($translated) ? $translated : '';
+    }
+
+    protected function extractFormLocale(FormInterface $form): ?string
+    {
+        while (null !== ($parentForm = $form->getParent())) {
+            $form = $parentForm;
+        }
+
+        return $form->getConfig()->getOption('attr')['lang'] ?? null;
     }
 }
