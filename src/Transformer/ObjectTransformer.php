@@ -60,6 +60,7 @@ class ObjectTransformer extends AbstractTransformer
                     ],
                 ],
             ];
+            $this->addAttr($form, $schema);
 
             // add csrf field if needed
             if (true === $form->getConfig()->getOption('csrf_protection')) {
