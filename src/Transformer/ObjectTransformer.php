@@ -32,7 +32,7 @@ class ObjectTransformer extends AbstractTransformer
                 if (empty($action = $form->getConfig()->getOption('action'))) {
                     $action = $request->getUri();
                 }
-                elseif (0 === strpos(strtolower(trim($action)), 'http')) {
+                elseif (0 !== strpos(strtolower(trim($action)), 'http')) {
                     $action = $request->getUriForPath($action);
                 }
             }
