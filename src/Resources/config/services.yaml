@@ -1,0 +1,23 @@
+services:
+    w3r_one_json_schema.form_extension.json_schema_extension:
+        class: W3rOne\JsonSchemaBundle\Form\Extension\JsonSchemaExtension
+        tags:
+            - { name: form.type_extension, extended-type: Symfony\Component\Form\Extension\Core\Type\FormType }
+
+    W3rOne\JsonSchemaBundle\Resolver:
+        public: true
+        arguments:
+            - '%w3r_one_json_schema.default_layout%'
+
+    w3r_one_json_schema.resolver:
+        alias: W3rOne\JsonSchemaBundle\Resolver
+        public: true
+
+    W3rOne\JsonSchemaBundle\JsonSchema:
+        public: true
+        arguments:
+            - '@w3r_one_json_schema.resolver'
+
+    w3r_one_json_schema.json_schema:
+        alias: W3rOne\JsonSchemaBundle\JsonSchema
+        public: true

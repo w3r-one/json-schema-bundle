@@ -13,8 +13,8 @@ namespace W3rOne\JsonSchemaBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 class W3rOneJsonSchemaExtension extends Extension
 {
@@ -28,8 +28,11 @@ class W3rOneJsonSchemaExtension extends Extension
 
         $container->setParameter('w3r_one_json_schema.default_layout', $config['default_layout']);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('services.xml');
-        $loader->load('transformers.xml');
+        $loader = new YamlFileLoader(
+            $container,
+            new FileLocator(__DIR__ . '/../Resources/config')
+        );
+        $loader->load('services.yaml');
+        $loader->load('transformers.yaml');
     }
 }
